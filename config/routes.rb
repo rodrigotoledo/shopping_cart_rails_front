@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  resources :shopping_carts, only: [:index, :show] do
+  resources :shopping_carts, only: [ :index, :show ] do
     member do
       put :pay
     end
   end
-  put 'shopping_carts/:id/touch', to: 'shopping_carts#touch'
+  put "shopping_carts/:id/touch", to: "shopping_carts#touch"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ShoppingCart < ActiveResource::Base
   self.include_format_in_path = false
   self.site = "http://localhost:3000"
@@ -15,9 +17,9 @@ class ShoppingCart < ActiveResource::Base
 
   def touch!
     Turbo::StreamsChannel.broadcast_replace_to(
-      'shopping_carts',
+      "shopping_carts",
       target: "shopping_cart_#{id}",
-      partial: 'shopping_carts/shopping_cart',
+      partial: "shopping_carts/shopping_cart",
       locals: { shopping_cart: self }
     )
   end

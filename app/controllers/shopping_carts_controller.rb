@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ShoppingCartsController < ApplicationController
   before_action :set_shopping_cart, only: %i[ pay touch ]
   protect_from_forgery except: :touch
