@@ -4,9 +4,9 @@ Rails.application.routes.draw do
   resources :shopping_carts, only: [ :index, :show ] do
     member do
       put :pay
+      put :touch
     end
   end
-  put "shopping_carts/:id/touch", to: "shopping_carts#touch"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

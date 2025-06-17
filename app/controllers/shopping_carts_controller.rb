@@ -28,5 +28,7 @@ class ShoppingCartsController < ApplicationController
 
   def set_shopping_cart
     @shopping_cart = ShoppingCart.find(params.expect(:id))
+  rescue
+    head :unprocessable_entity
   end
 end
