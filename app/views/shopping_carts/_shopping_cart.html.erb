@@ -1,0 +1,23 @@
+<%=turbo_frame_tag dom_id(shopping_cart) do%>
+  <h2>#<%=shopping_cart.id%> - <%=shopping_cart.customer %></h2>
+  <h3>Status:
+    <% if shopping_cart.pending? %>
+      <%= link_to shopping_cart.status,
+            pay_shopping_cart_path(shopping_cart),
+            method: :put,
+            data: {
+              turbo_stream: true,
+              turbo_frame: "_top",
+              'turbo-method': 'put',
+              'turbo-confirm': "Are you sure?"
+            } %>
+    <% else %>
+      <%= shopping_cart.status %>
+    <% end %>
+  </h3>
+  <% if shopping_cart.shopping_cart_items.present? %>
+    <%= render partial: "shopping_carts/shopping_cart_item", collection: shopping_cart.shopping_cart_items %>
+  <% else %>
+    <h3>Without products</h3>
+  <% end %>
+<% end %>
