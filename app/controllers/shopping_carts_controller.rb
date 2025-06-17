@@ -11,17 +11,15 @@ class ShoppingCartsController < ApplicationController
   def pay
     @shopping_cart.pay!
     head :ok
-  rescue => e
-    logger.info e.inspect
+  rescue
     head :unprocessable_entity
   end
 
   def touch
-    if @shopping_cart.touch!
-      head :ok
-    else
-      head :unprocessable_entity
-    end
+    @shopping_cart.touch!
+    head :ok
+  rescue
+    head :unprocessable_entity
   end
 
   private

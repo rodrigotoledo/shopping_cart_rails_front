@@ -43,6 +43,16 @@ RSpec.describe "ShoppingCartsController", type: :request do
 
       expect(response).to have_http_status(:unprocessable_entity)
     end
+
+    it "Returns 422 when have error with integration" do
+      cart = instance_double(ShoppingCart, id: 1)
+      allow(cart).to receive(:pay!).and_raise(StandardError)
+      allow(ShoppingCart).to receive(:find).with("1").and_return(cart)
+
+      put pay_shopping_cart_path(1)
+
+      expect(response).to have_http_status(:unprocessable_entity)
+    end
   end
 
   describe "PUT /shopping_carts/:id/touch" do
@@ -57,12 +67,12 @@ RSpec.describe "ShoppingCartsController", type: :request do
       expect(cart).to have_received(:touch!)
     end
 
-    it "Returns 422" do
-      cart = instance_double(ShoppingCart, id: 1)
-      allow(ShoppingCart).to receive(:find).with("1").and_return(cart)
-      allow(cart).to receive(:touch!).and_return(false)
+    it "Returns 422 when have error with integration" do
+      cart = instance_double(ShoppingCart, id: 2)
+      allow(cart).to receive(:touch!).and_raise(StandardError)
+      allow(ShoppingCart).to receive(:find).with("2").and_return(cart)
 
-      put touch_shopping_cart_path(1)
+      put touch_shopping_cart_path(2)
 
       expect(response).to have_http_status(:unprocessable_entity)
     end
