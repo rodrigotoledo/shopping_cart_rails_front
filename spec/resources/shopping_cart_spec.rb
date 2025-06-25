@@ -17,7 +17,7 @@ RSpec.describe ShoppingCart, type: :model do
 
   describe ".pay" do
     it "sends a PUT request to /:id/pay" do
-      stub = stub_request(:put, "http://localhost:3000/shopping_carts/123/pay").
+      stub = stub_request(:put, "http://localhost:3001/shopping_carts/123/pay").
       with(
         headers: {
         'Accept'=>'*/*',

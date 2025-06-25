@@ -2,7 +2,7 @@ Start with
 
 ```bash
 rails db:prepare
-rails s -p 3001
+bin/dev
 ```
 
 and after

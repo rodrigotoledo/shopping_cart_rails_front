@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   resources :shopping_carts, only: [ :index, :show ] do
     member do
       put :pay
-      put :touch
     end
   end
 

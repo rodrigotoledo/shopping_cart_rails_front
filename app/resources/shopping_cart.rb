@@ -2,7 +2,7 @@
 
 class ShoppingCart < ActiveResource::Base
   self.include_format_in_path = false
-  self.site = "http://localhost:3000"
+  self.site = "http://localhost:3001"
   def pending?
     status.to_s == "pending"
   end

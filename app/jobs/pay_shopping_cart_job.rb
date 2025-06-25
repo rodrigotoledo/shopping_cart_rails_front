@@ -5,5 +5,6 @@ class PayShoppingCartJob < ApplicationJob
 
   def perform(shopping_cart_id)
     ShoppingCart.pay(shopping_cart_id)
+    ShoppingCart.find(shopping_cart_id).touch!
   end
 end
