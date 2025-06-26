@@ -1,8 +1,22 @@
 Start with
 
 ```bash
-rails db:prepare
+bin/rails db:drop
+bin/rails db:drop:cache
+bin/rails db:drop:cable
+bin/rails db:drop:queue
+bin/rails db:create
+bin/rails db:create:cache
+bin/rails db:create:cable
+bin/rails db:create:queue
+bin/rails db:migrate
 bin/dev
+```
+
+or
+
+```bash
+rails s -p 3002
 ```
 
 and after
