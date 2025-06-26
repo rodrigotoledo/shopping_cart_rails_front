@@ -1,5 +1,5 @@
 <pre>
   Product: <%=shopping_cart_item.product %><br />
   Quantity: <%=shopping_cart_item.quantity %><br />
-  Price: <%=number_to_currency shopping_cart_item.price %>
+  Price: <%=number_to_currency shopping_cart_item.price %> - <strong>Amount: <%= number_to_currency(amount_of_shopping_cart_item(shopping_cart_item))%></strong>
 </pre>
